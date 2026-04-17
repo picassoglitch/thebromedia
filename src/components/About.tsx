@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useCallback } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import AnimateOnScroll, { StaggerContainer, staggerItem } from "./AnimateOnScroll";
 import type { AboutContent, VideoContent } from "@/types/content";
@@ -16,9 +16,9 @@ function getYouTubeId(url: string): string | null {
 }
 
 export default function About({ about, video }: AboutProps) {
-  const ref = useRef<HTMLElement>(null);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [hovered, setHovered] = useState(false);
+  const ref        = useRef<HTMLElement>(null);
+  const iframeRef  = useRef<HTMLIFrameElement>(null);
+  const videoWrap  = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const bgX   = useTransform(scrollYProgress, [0, 1], ["-4%", "4%"]);
@@ -26,7 +26,7 @@ export default function About({ about, video }: AboutProps) {
 
   const ytId     = video.url ? getYouTubeId(video.url) : null;
   const embedSrc = ytId
-    ? `https://www.youtube.com/embed/${ytId}?enablejsapi=1&mute=1&controls=1&rel=0&modestbranding=1&playsinline=1`
+    ? `https://www.youtube.com/embed/${ytId}?enablejsapi=1&autoplay=0&mute=1&controls=1&rel=0&modestbranding=1&playsinline=1`
     : "";
 
   const sendCmd = useCallback((fn: string) => {
@@ -36,14 +36,25 @@ export default function About({ about, video }: AboutProps) {
     );
   }, []);
 
-  const handleMouseEnter = useCallback(() => {
-    setHovered(true);
-    if (ytId) sendCmd("playVideo");
-  }, [ytId, sendCmd]);
+  // Play when video enters viewport, pause when it leaves
+  useEffect(() => {
+    if (!ytId || !videoWrap.current) return;
 
-  const handleMouseLeave = useCallback(() => {
-    setHovered(false);
-    if (ytId) sendCmd("pauseVideo");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            sendCmd("playVideo");
+          } else {
+            sendCmd("pauseVideo");
+          }
+        });
+      },
+      { threshold: 0.4 } // play once 40% of the video is visible
+    );
+
+    observer.observe(videoWrap.current);
+    return () => observer.disconnect();
   }, [ytId, sendCmd]);
 
   return (
@@ -107,21 +118,16 @@ export default function About({ about, video }: AboutProps) {
           {/* Right — video panel */}
           <div className="lg:col-span-6">
             <AnimateOnScroll direction="left" delay={0.14} distance={70}>
-              <div
-                className="relative w-full aspect-video cursor-pointer group"
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-              >
-                {/* Outer glow on hover */}
-                <motion.div
-                  animate={{ opacity: hovered ? 1 : 0 }}
-                  transition={{ duration: 0.4 }}
+              <div ref={videoWrap} className="relative w-full aspect-video group">
+
+                {/* Glow */}
+                <div
                   className="absolute -inset-[1px] pointer-events-none"
-                  style={{ boxShadow: "0 0 50px rgba(232,92,0,0.18), 0 0 100px rgba(232,92,0,0.07)" }}
+                  style={{ boxShadow: "0 0 50px rgba(232,92,0,0.14), 0 0 100px rgba(232,92,0,0.06)" }}
                 />
 
                 {/* Border */}
-                <div className="absolute inset-0 border border-white/10 group-hover:border-brand-accent/30 transition-colors duration-500 z-10 pointer-events-none" />
+                <div className="absolute inset-0 border border-brand-accent/25 transition-colors duration-500 z-10 pointer-events-none" />
 
                 {/* Corner accents */}
                 {[
@@ -130,10 +136,8 @@ export default function About({ about, video }: AboutProps) {
                   "bottom-0 left-0 border-b-2 border-l-2",
                   "bottom-0 right-0 border-b-2 border-r-2",
                 ].map((cls, i) => (
-                  <motion.div
+                  <div
                     key={i}
-                    animate={{ opacity: hovered ? 1 : 0.45 }}
-                    transition={{ duration: 0.3 }}
                     className={`absolute w-8 h-8 border-brand-accent z-20 pointer-events-none ${cls}`}
                   />
                 ))}
@@ -149,10 +153,8 @@ export default function About({ about, video }: AboutProps) {
                     className="absolute inset-0 w-full h-full bg-[#0a0a0a]"
                   />
                 ) : (
-                  /* Placeholder — same styling as before but now 16:9 */
                   <div className="absolute inset-0 bg-[#0d0d0d] flex items-center justify-center">
                     <div className="absolute inset-0 grid-bg opacity-40" />
-                    {/* Rotating rings */}
                     <div className="relative flex items-center justify-center">
                       {[160, 110, 70].map((size, i) => (
                         <motion.div
@@ -169,7 +171,6 @@ export default function About({ about, video }: AboutProps) {
                         className="w-3 h-3 rounded-full bg-brand-accent"
                       />
                     </div>
-                    {/* Scan line */}
                     <motion.div
                       animate={{ top: ["-5%", "105%"] }}
                       transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", repeatDelay: 1.5 }}
@@ -183,19 +184,6 @@ export default function About({ about, video }: AboutProps) {
                       </p>
                     </div>
                   </div>
-                )}
-
-                {/* Hover hint */}
-                {ytId && (
-                  <motion.div
-                    animate={{ opacity: hovered ? 0 : 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute bottom-3 left-0 right-0 flex justify-center z-10 pointer-events-none"
-                  >
-                    <span className="text-white/25 text-[10px] uppercase tracking-[0.4em]">
-                      Hover para reproducir
-                    </span>
-                  </motion.div>
                 )}
               </div>
             </AnimateOnScroll>
