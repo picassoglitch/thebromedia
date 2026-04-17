@@ -1,0 +1,183 @@
+{
+  "nav": {
+    "logo": "THE BRO MEDIA",
+    "links": [
+      {
+        "label": "Nosotros",
+        "href": "#nosotros"
+      },
+      {
+        "label": "Nuestros Logros",
+        "href": "#logros"
+      },
+      {
+        "label": "Nuestros Bro's",
+        "href": "#bros"
+      },
+      {
+        "label": "Contacto",
+        "href": "#contacto"
+      }
+    ],
+    "cta": "Contáctanos"
+  },
+  "hero": {
+    "tagline": "The Bro experience starts here",
+    "headline": "WE ARE THAT BRO",
+    "subheadline": "THAT HAS A BRO FOR EVERYTHING",
+    "ctaLabel": "CONTÁCTANOS",
+    "ctaHref": "#contacto",
+    "bgImage": "",
+    "logoImage": "/images/logo-white.png"
+  },
+  "ticker": [
+    "Tech",
+    "Media",
+    "Marketing",
+    "AI",
+    "BTL",
+    "WiFi Marketing",
+    "Facial Recognition",
+    "SaaS",
+    "Digital",
+    "Innovation"
+  ],
+  "about": {
+    "label": "Nosotros",
+    "title": "Somos The Bro Media",
+    "body": "The Bro Media es una agencia de Tecnología, Medios y Marketing especializada en el área digital. Nos basamos en interpretar las necesidades de nuestros clientes, identificar las oportunidades publicitarias adecuadas para las empresas y desarrollar campañas de marketing online y offline efectivas que alcancen los objetivos propuestos.",
+    "image": "/images/about.jpg"
+  },
+  "experiences": {
+    "label": "Experiencias",
+    "title": "Our fullfilled experiences",
+    "items": [
+      {
+        "icon": "zap",
+        "title": "EVENTOS / WIFI / LOGÍSTICA DIGITAL",
+        "description": "Conectividad y logística digital para todo tipo de eventos, activaciones y puntos de venta. Internet móvil y dedicado para streamings, festivales y convenciones."
+      },
+      {
+        "icon": "globe",
+        "title": "INTERNET DEDICADO",
+        "description": "Internet dedicado de alta velocidad para streamings, eventos, festivales, convenciones y activaciones BTL en cualquier ubicación."
+      },
+      {
+        "icon": "gamepad",
+        "title": "GAMING / REALIDAD AUMENTADA",
+        "description": "Activaciones y experiencias inmersivas con gaming y realidad aumentada. Reconocimiento facial, detección de emociones y análisis demográfico en tiempo real."
+      }
+    ]
+  },
+  "stats": {
+    "label": "Nuestros Logros",
+    "title": "Números que nos respaldan",
+    "items": [
+      {
+        "value": "+15K",
+        "unit": "MB",
+        "label": "de internet gratis descargados en nuestros eventos y activaciones"
+      },
+      {
+        "value": "8.9",
+        "unit": "/10",
+        "label": "Rating en nuestras activaciones y experiencias por parte de nuestros usuarios finales"
+      },
+      {
+        "value": "+1.7M",
+        "unit": "",
+        "label": "De personas han participado en nuestras experiencias"
+      },
+      {
+        "value": "+11.1M",
+        "unit": "",
+        "label": "De datos demográficos medidos en campañas Offline"
+      }
+    ]
+  },
+  "video": {
+    "label": "The Bro Reel",
+    "title": "The Bro Experience",
+    "subtitle": "Conoce nuestras activaciones y experiencias en acción.",
+    "url": "https://youtu.be/dlFWAQ337uQ",
+    "poster": ""
+  },
+  "services": {
+    "label": "The Tech Bro",
+    "title": "The Tech Bro",
+    "subtitle": "Activaciones y experiencias basadas en tecnología. Soluciones integrales para conectar tu marca con tu audiencia de manera innovadora.",
+    "items": [
+      {
+        "icon": "cpu",
+        "title": "Activaciones y experiencias basadas en tecnología",
+        "description": "Creamos experiencias tecnológicas únicas que conectan marcas con audiencias de forma memorable."
+      },
+      {
+        "icon": "brain",
+        "title": "Reconocimiento facial, de emociones y demográfico",
+        "description": "Tecnología de vanguardia para analizar y entender a tu audiencia en tiempo real."
+      },
+      {
+        "icon": "bar-chart",
+        "title": "Medición de campañas BTL",
+        "description": "Proximidad, concurrencia, interacción, demografía y satisfacción. Datos que impulsan decisiones."
+      },
+      {
+        "icon": "map-pin",
+        "title": "Proximity Marketing",
+        "description": "Conecta con tu audiencia en el momento y lugar correcto con tecnología de proximidad avanzada."
+      },
+      {
+        "icon": "globe",
+        "title": "SAAS & Inteligencia Artificial",
+        "description": "Soluciones SaaS e inteligencia artificial aplicada para optimizar campañas y maximizar el ROI."
+      },
+      {
+        "icon": "wifi",
+        "title": "WiFi Marketing & Internet Dedicado",
+        "description": "WiFi marketing, internet móvil e internet dedicado para streamings, eventos, festivales y convenciones."
+      }
+    ]
+  },
+  "partners": {
+    "label": "Nuestros Bro's",
+    "title": "Marcas que confían en nosotros",
+    "subtitle": "Trabajamos con las mejores marcas para crear experiencias memorables.",
+    "logos": [
+      {
+        "name": "Partner 1",
+        "image": ""
+      },
+      {
+        "name": "Partner 2",
+        "image": ""
+      },
+      {
+        "name": "Partner 3",
+        "image": ""
+      },
+      {
+        "name": "Partner 4",
+        "image": ""
+      },
+      {
+        "name": "Partner 5",
+        "image": ""
+      }
+    ]
+  },
+  "contact": {
+    "label": "Contacto",
+    "title": "NEED HELP FROM A BRO?",
+    "subtitle": "Hablemos de cómo podemos llevar tu marca al siguiente nivel con tecnología, medios y marketing.",
+    "phone": "+55 27550510",
+    "email": "contacto@thebromedia.com",
+    "instagram": "@thebro.media",
+    "instagramUrl": "https://instagram.com/thebro.media",
+    "facebook": "The Bro Media",
+    "facebookUrl": "https://facebook.com/thebromedia"
+  },
+  "footer": {
+    "copy": "© 2024 The Bro Media. Todos los derechos reservados."
+  }
+}

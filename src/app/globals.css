@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-black: #080808;
+  --brand-dark: #0f0f0f;
+  --brand-card: #141414;
+  --brand-border: #1e1e1e;
+  --brand-accent: #E85C00;
+  --brand-accent-dim: #c44900;
+  --brand-gray: #888888;
+  --glow: rgba(232, 92, 0, 0.15);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--brand-black);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--brand-black); }
+::-webkit-scrollbar-thumb { background: var(--brand-accent); border-radius: 2px; }
+
+/* ── Selection ── */
+::selection { background: var(--brand-accent); color: white; }
+
+/* ── Ticker ── */
+.ticker-track {
+  display: inline-flex;
+  animation: ticker 28s linear infinite;
+}
+
+/* ── Section spacing ── */
+.section-padding { padding: 110px 0; }
+
+/* ── Grid pattern ── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* ── Glass card ── */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* ── Glow utilities ── */
+.glow-accent {
+  box-shadow: 0 0 40px rgba(232, 92, 0, 0.2), 0 0 80px rgba(232, 92, 0, 0.08);
+}
+.glow-text {
+  text-shadow: 0 0 30px rgba(232, 92, 0, 0.5);
+}
+
+/* ── Card hover ── */
+.card-hover {
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
+}
+.card-hover:hover {
+  transform: translateY(-5px);
+  border-color: rgba(232, 92, 0, 0.25);
+  box-shadow: 0 12px 40px rgba(232, 92, 0, 0.08);
+}
+
+/* ── Keyframes ── */
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(232,92,0,0.15); }
+  50%       { box-shadow: 0 0 50px rgba(232,92,0,0.4); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes scan {
+  0%   { top: -10%; }
+  100% { top: 110%; }
+}
+
+@keyframes mesh-move {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
