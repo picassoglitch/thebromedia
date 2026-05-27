@@ -39,14 +39,29 @@ export default function AdminLogin() {
   }
 
   return (
-    <div className="min-h-screen bg-brand-black grid-bg flex items-center justify-center p-4">
-      {/* Background glow */}
-      <div className="fixed inset-0 flex items-center justify-center pointer-events-none">
+    <div className="min-h-screen bg-brand-black grid-bg flex items-center justify-center p-4 overflow-hidden relative">
+      {/* Background glow — brand orange, breathes subtly */}
+      <motion.div
+        animate={{ opacity: [0.06, 0.12, 0.06], scale: [1, 1.06, 1] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="fixed inset-0 flex items-center justify-center pointer-events-none"
+      >
         <div
-          className="w-[600px] h-[600px] rounded-full opacity-5"
-          style={{ background: "radial-gradient(circle, rgba(232,255,0,1) 0%, transparent 70%)" }}
+          className="w-[700px] h-[700px] rounded-full"
+          style={{
+            background: "radial-gradient(circle, rgba(232,92,0,1) 0%, transparent 70%)",
+            filter: "blur(40px)",
+          }}
         />
-      </div>
+      </motion.div>
+
+      {/* Scanning accent line top */}
+      <motion.div
+        animate={{ left: ["-100%", "100%"] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "linear", repeatDelay: 2 }}
+        className="fixed top-0 h-px w-1/3 pointer-events-none"
+        style={{ background: "linear-gradient(90deg, transparent, rgba(232,92,0,0.6), transparent)" }}
+      />
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}

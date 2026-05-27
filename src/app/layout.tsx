@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import AppShell from "@/components/fx/AppShell";
 
 export const metadata: Metadata = {
   title: "The Bro Media | Tech. Media. Marketing.",
@@ -28,7 +29,9 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <AppShell>{children}</AppShell>
+      </body>
     </html>
   );
 }

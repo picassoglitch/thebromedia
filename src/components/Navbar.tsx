@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import Image from "next/image";
 import type { NavContent } from "@/types/content";
 import { Menu, X } from "lucide-react";
+import { MagneticButton } from "./fx/effects";
 
 interface NavbarProps {
   nav: NavContent;
@@ -15,6 +16,10 @@ export default function Navbar({ nav, logoImage }: NavbarProps) {
   const [scrolled, setScrolled]     = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActive]  = useState("");
+
+  // page-wide scroll progress for the accent bar
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.2 });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -47,12 +52,21 @@ export default function Navbar({ nav, logoImage }: NavbarProps) {
             : "bg-transparent"
         }`}
       >
-        {/* Thin accent line at very top */}
+        {/* Scroll progress accent — fills as the user scrolls the page */}
+        <motion.div
+          className="absolute top-0 left-0 h-px bg-brand-accent origin-left z-[60]"
+          style={{
+            scaleX: progress,
+            right: 0,
+            boxShadow: "0 0 8px rgba(232,92,0,0.6)",
+          }}
+        />
+        {/* Thin gradient sheen under the bar once scrolled */}
         {scrolled && (
           <motion.div
             layoutId="nav-accent"
-            className="absolute top-0 left-0 right-0 h-px"
-            style={{ background: "linear-gradient(90deg, transparent, rgba(232,92,0,0.6), transparent)" }}
+            className="absolute top-0 left-0 right-0 h-px opacity-50"
+            style={{ background: "linear-gradient(90deg, transparent, rgba(232,92,0,0.3), transparent)" }}
           />
         )}
 
@@ -95,16 +109,17 @@ export default function Navbar({ nav, logoImage }: NavbarProps) {
               })}
             </div>
 
-            {/* CTA */}
+            {/* CTA — magnetic */}
             <div className="hidden lg:flex items-center">
-              <motion.a
+              <MagneticButton
+                as="a"
                 href="#contacto"
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.97 }}
+                strength={12}
+                radius={90}
                 className="px-5 py-2.5 bg-brand-accent text-white text-xs font-black uppercase tracking-[0.2em] hover:bg-brand-accent-dim transition-colors duration-200"
               >
                 {nav.cta}
-              </motion.a>
+              </MagneticButton>
             </div>
 
             {/* Mobile burger */}

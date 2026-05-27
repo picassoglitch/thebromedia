@@ -1,7 +1,7 @@
 import { readFileSync } from "fs";
 import path from "path";
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
+import HeroV2 from "@/components/HeroV2";
 import Ticker from "@/components/Ticker";
 import About from "@/components/About";
 import Experiences from "@/components/Experiences";
@@ -10,6 +10,7 @@ import Services from "@/components/Services";
 import Partners from "@/components/Partners";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import SectionSidebar from "@/components/fx/SectionSidebar";
 import type { SiteContent } from "@/types/content";
 
 function getContent(): SiteContent {
@@ -21,9 +22,20 @@ function getContent(): SiteContent {
 export default function Home() {
   const content = getContent();
   return (
-    <main className="bg-[#080808] min-h-screen">
+    <main className="min-h-screen">
       <Navbar nav={content.nav} logoImage={content.hero.logoImage} />
-      <Hero hero={content.hero} />
+      <SectionSidebar
+        sections={[
+          { id: "hero", label: "Inicio" },
+          { id: "nosotros", label: "Nosotros" },
+          { id: "experiencias", label: "Experiencias" },
+          { id: "logros", label: "Logros" },
+          { id: "servicios", label: "Servicios" },
+          { id: "bros", label: "Bro's" },
+          { id: "contacto", label: "Contacto" },
+        ]}
+      />
+      <HeroV2 hero={content.hero} />
       <Ticker items={content.ticker} />
       <About about={content.about} video={content.video} />
       <Experiences experiences={content.experiences} />
