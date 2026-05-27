@@ -109,7 +109,7 @@ export default function About({ about, video }: AboutProps) {
             <motion.h2
               ref={headlineRef}
               style={{ scale: hScale, transformOrigin: "left center" }}
-              className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-[0.95] tracking-tight mb-10 will-change-transform"
+              className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-[0.95] tracking-tight mb-10 will-change-transform break-words"
             >
               <SplitText text="¿Quiénes" className="block" staggerChar={0.035} />
               <SplitText text="somos?" className="block text-brand-accent" staggerChar={0.035} delay={0.3} />

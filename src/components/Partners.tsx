@@ -31,7 +31,7 @@ export default function Partners({ partners }: PartnersProps) {
               <span className="text-brand-accent text-xs font-bold uppercase tracking-[0.45em]">{partners.label}</span>
             </div>
           </AnimateOnScroll>
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-[0.95] tracking-tight mb-4">
+          <h2 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[0.95] tracking-tight mb-4 break-words">
             <SplitText text={partners.title} staggerChar={0.025} />
           </h2>
           <AnimateOnScroll direction="up" delay={0.15}>

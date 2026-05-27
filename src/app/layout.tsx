@@ -3,14 +3,42 @@ import "./globals.css";
 import AppShell from "@/components/fx/AppShell";
 
 export const metadata: Metadata = {
-  title: "The Bro Media | Tech. Media. Marketing.",
+  // Tab title template — every child page gets "<page> | The Bro Media"
+  // unless it overrides title. Default falls back to the full string.
+  title: {
+    default: "The Bro Media | Tech. Media. Marketing.",
+    template: "%s | The Bro Media",
+  },
   description:
     "Agencia de tecnología, medios y marketing digital. Interpretamos tus necesidades, identificamos oportunidades publicitarias y ejecutamos campañas efectivas.",
   keywords: "tech, media, marketing, BTL, WiFi marketing, activaciones, inteligencia artificial",
+  // Favicon / tab icon — the BRO hex on dark, sized for browsers + iOS
+  icons: {
+    icon: [
+      { url: "/images/logo-icon-dark.jpeg", type: "image/jpeg" },
+    ],
+    apple: { url: "/images/logo-icon-dark.jpeg", type: "image/jpeg" },
+    shortcut: "/images/logo-icon-dark.jpeg",
+  },
   openGraph: {
     title: "The Bro Media",
     description: "The Bro experience starts here",
     type: "website",
+    siteName: "The Bro Media",
+    images: [
+      {
+        url: "/images/logo-thumbnail.png",
+        width: 947,
+        height: 470,
+        alt: "The Bro Media",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Bro Media",
+    description: "The Bro experience starts here",
+    images: ["/images/logo-thumbnail.png"],
   },
 };
 

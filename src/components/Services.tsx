@@ -84,11 +84,11 @@ export default function Services({ services }: ServicesProps) {
               <span className="text-brand-accent text-xs font-bold uppercase tracking-[0.45em]">{services.label}</span>
             </div>
           </AnimateOnScroll>
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-[0.95] tracking-tight">
+          <h2 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black break-words text-white leading-[0.95] tracking-tight">
             <SplitText text="NEED TECH" className="block" />
           </h2>
           <h2
-            className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-brand-accent leading-[0.95] tracking-tight mb-8"
+            className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black break-words text-brand-accent leading-[0.95] tracking-tight mb-8"
             style={{ textShadow: "0 0 60px rgba(232,92,0,0.25)" }}
           >
             <SplitText text="TRENDING IDEAS?" className="block" delay={0.3} />

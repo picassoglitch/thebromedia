@@ -62,11 +62,11 @@ export default function Contact({ contact }: ContactProps) {
               <span className="text-brand-accent text-xs font-bold uppercase tracking-[0.45em]">{contact.label}</span>
             </div>
           </AnimateOnScroll>
-          <h2 className="text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-black text-white leading-[0.9] tracking-tight">
+          <h2 className="text-[2.5rem] sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black break-words text-white leading-[0.9] tracking-tight">
             <SplitText text="NEED HELP" className="block" />
           </h2>
           <h2
-            className="text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-black leading-[0.9] tracking-tight mb-8"
+            className="text-[2.5rem] sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black break-words leading-[0.9] tracking-tight mb-8"
             style={{ textShadow: "0 0 60px rgba(232,92,0,0.25)" }}
           >
             <span>FROM A&nbsp;</span>
