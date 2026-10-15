@@ -36,14 +36,9 @@ export default function Footer({ footer }: FooterProps) {
             </motion.div>
           </MagneticButton>
 
-          {/* Centre block — copyright + Quantor service-provider credit (static text, not a link) */}
+          {/* Centre block — copyright (static text, not a link) */}
           <div className="flex flex-col sm:flex-row items-center gap-x-6 gap-y-2 text-center sm:text-left">
             <span className="text-white/25 text-xs text-center sm:text-left break-words max-w-xs sm:max-w-none">{footer.copy}</span>
-            <span className="hidden sm:block w-1 h-1 rounded-full bg-white/15" aria-hidden />
-            <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.3em] text-white/40">
-              <span className="text-white/30">by</span>
-              <span className="font-bold tracking-[0.35em] text-white/55">Quantor</span>
-            </span>
           </div>
 
           {/* Admin */}
