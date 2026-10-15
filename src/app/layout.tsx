@@ -1,15 +1,6 @@
 import type { Metadata } from "next";
-import { readFileSync } from "fs";
-import path from "path";
 import "./globals.css";
 import AppShell from "@/components/fx/AppShell";
-import type { SiteContent } from "@/types/content";
-
-function getFooter() {
-  const filePath = path.join(process.cwd(), "content", "site.json");
-  const raw = readFileSync(filePath, "utf-8");
-  return (JSON.parse(raw) as SiteContent).footer;
-}
 
 export const metadata: Metadata = {
   // Tab title template — every child page gets "<page> | The Bro Media"
@@ -56,7 +47,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const footer = getFooter();
   return (
     <html lang="es" className="scroll-smooth">
       <head>
@@ -68,7 +58,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <AppShell footer={footer}>{children}</AppShell>
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );
