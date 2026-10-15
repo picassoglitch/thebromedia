@@ -9,6 +9,7 @@ import Stats from "@/components/Stats";
 import Services from "@/components/Services";
 import Partners from "@/components/Partners";
 import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 import SectionSidebar from "@/components/fx/SectionSidebar";
 import type { SiteContent } from "@/types/content";
 
@@ -42,6 +43,7 @@ export default function Home() {
       <Services services={content.services} />
       <Partners partners={content.partners} />
       <Contact contact={content.contact} />
+      <Footer footer={content.footer} />
     </main>
   );
 }
